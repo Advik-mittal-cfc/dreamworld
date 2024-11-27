@@ -1,0 +1,11 @@
+tasks:
+  - name: Setup Minetest
+    init: |
+      sudo apt update && sudo apt install -y minetest-server
+    command: ./start-minetest-server.sh
+ports:
+  - port: 30000
+    onOpen: notify
+onStop:
+  - name: Backup Data
+    command: ./backup-minetest-data.sh
